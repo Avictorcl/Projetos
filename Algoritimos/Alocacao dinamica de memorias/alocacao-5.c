@@ -13,41 +13,61 @@ corresponde `a jun¸c˜ao dos vetores passados como parˆametro (ver exemplo).
     Resultado: [13526]
 */
 
-void junta_vetores(int *vA, int tA, int *vB, int tB){
+#include <stdio.h>
+#include <stdlib.h>
+
+// A função agora retorna um ponteiro de inteiro (int *)
+int *junta_vetores(int *vA, int tA, int *vB, int tB){
     int *novo;
     int i, tamanho = tA + tB;
-    novo = malloc(sizeof(int)*tamanho);
-    for(i=0;i<tamanho; i++){
-        if(i<tA){
-            *(novo+i) = (vA+i);
+    
+    novo = (int *) malloc(sizeof(int) * tamanho);
+    
+    for(i = 0; i < tamanho; i++){
+        if(i < tA){
+            *(novo + i) = *(vA + i);
         }
-        else
-            *(novo+i) = *(vB+i-tA);
-    return novo;
+        else {
+            *(novo + i) = *(vB + i - tA);
+        }
     }
+    
+    return novo;
 }
 
 int main(){
     int i, tmnA, tmnB, *vetorA, *vetorB, *vetorC;
-    printf("Tamanho do vetor A");
+    
+    printf("Tamanho do vetor A: ");
     scanf("%d", &tmnA);
-    vetorA = malloc(sizeof(int)*tmnA);
-    printf("Tamanho do vetor B");
+    vetorA = (int *) malloc(sizeof(int) * tmnA);
+    
+    printf("Tamanho do vetor B: ");
     scanf("%d", &tmnB);
-    vetorB = malloc(sizeof(int)*tmnB);
-
-    for(i=0; i< tmnA; i++){
-        printf("Vetor A - %do elemento", i+1);
-        scanf("%d", vetorA+i);
+    vetorB = (int *) malloc(sizeof(int) * tmnB);
+    
+    for(i = 0; i < tmnA; i++){
+        printf("Vetor A - %do elemento: ", i + 1);
+        scanf("%d", vetorA + i);
     }
-
-        for(i=0; i< tmnB; i++){
-        printf("Vetor B - %do elemento", i+1);
-        scanf("%d", vetorB+i);
+    
+    for(i = 0; i < tmnB; i++){
+        printf("Vetor B - %do elemento: ", i + 1);
+        scanf("%d", vetorB + i);
     }
     
     vetorC = junta_vetores(vetorA, tmnA, vetorB, tmnB);
-    for(i=0; i<tmnA + tmnB; i++){
-        printf("%d", *(vetorC+i));
+    
+    printf("Resultado: [");
+    for(i = 0; i < tmnA + tmnB; i++){
+        printf("%d", *(vetorC + i));
     }
+    printf("]\n");
+    
+    // Boa prática: liberar a memória alocada dinamicamente
+    free(vetorA);
+    free(vetorB);
+    free(vetorC);
+    
+    return 0;
 }
