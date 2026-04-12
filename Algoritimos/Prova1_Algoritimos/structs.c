@@ -18,8 +18,8 @@ void struct_1() {
 
     printf("Veiculo registrado: %s, ano %d, com %d cavalos de potencia.\n", 
            meuVeiculo.modelo, meuVeiculo.ano, meuVeiculo.potencia);
-
 }
+
 
 //? Typedef:
 void struct_2(){
@@ -42,7 +42,7 @@ void struct_2(){
 
     /*O que faz: Cria uma estrutura imediatamente a batiza com o apelido "Sensor"
     Note que não escrevemos struct Sensor ( nós colocamos o nome la no final,
-    antes do ponto e virgula)                                                  */
+    antes do ponto e virgula)                                                 */
 
     typedef struct {
         char modelo[50];
@@ -50,7 +50,7 @@ void struct_2(){
     } Sensor;
 
     /* Criamos a variavel apenas usando o apeelido dela.
-        Veja como fica limpo, não é preciso escrever "struct Sensor meuSensor"*/
+       Veja como fica limpo, não é preciso escrever "struct Sensor meuSensor"*/
 
         Sensor sensorTemperatura;
 
@@ -58,8 +58,8 @@ void struct_2(){
         sensorTemperatura.porta_leitura = 4;
 
         printf("Equipamento : %s, está medindo: %d", sensorTemperatura.modelo, sensorTemperatura.porta_leitura);
-
 }
+
 
 //? Subcategorias:
 void struct_3(){
@@ -84,17 +84,31 @@ void struct_3(){
 
     printf("-Carro: %s\n-Ano: %d \n Expecificações do motor: \n-Cilindros: %d\n-Potencia:%d", meuVeiculo.modelo, meuVeiculo.ano, meuVeiculo.propulsor.Cilindros, meuVeiculo.propulsor.Potencia);
 
-    return 0;
-
 }
+
 
 //? Vetor de estruturas:
 void struct_4(){
-    
+    struct Carro {
+        char modelo[50];
+        int ano;
+    };
+
+    struct Carro frota[3]; //Criando um vetor para armazenar 3 carros
+
+    strcpy(frota[0].modelo, "Onix");
+    frota[0].ano = 2025;
+    strcpy(frota[1].modelo, "Cruze");
+    frota[1].ano = 2024;
+
+    printf("Ficha da vaga 0:\n-Carro: %s\n-Ano: %d\n", frota[0].modelo, frota[0].ano);
+    printf("Ficha da vaga 1:\n-Carro: %s\n-Ano: %d\n", frota[1].modelo, frota[1].ano);
+
 }
+
 
 // PAINEL DE CONTROLE
 int main() {
-    struct_3();
+    struct_4();
     return 0;
 }
