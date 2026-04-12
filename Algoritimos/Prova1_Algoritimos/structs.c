@@ -61,11 +61,40 @@ void struct_2(){
 
 }
 
+//? Subcategorias:
 void struct_3(){
+
+    struct Motor{
+        int Cilindros;
+        int Potencia;
+    };
+
+    struct Carro{
+        char modelo[50];
+        int ano;
+        struct Motor propulsor; //Juntando a struct dentro da principal
+    };
+
+    struct Carro meuVeiculo;
+
+        strcpy (meuVeiculo.modelo, "Onix");
+        meuVeiculo.ano = 2025;
+        meuVeiculo.propulsor.Cilindros = 4;
+        meuVeiculo.propulsor.Potencia = 153;    
+
+    printf("-Carro: %s\n-Ano: %d \n Expecificações do motor: \n-Cilindros: %d\n-Potencia:%d", meuVeiculo.modelo, meuVeiculo.ano, meuVeiculo.propulsor.Cilindros, meuVeiculo.propulsor.Potencia);
+
+    return 0;
+
+}
+
+//? Vetor de estruturas:
+void struct_4(){
     
 }
+
 // PAINEL DE CONTROLE
 int main() {
-    struct_1();
+    struct_3();
     return 0;
 }
