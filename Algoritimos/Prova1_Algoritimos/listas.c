@@ -136,9 +136,8 @@ void lista_5(){
         struct NoSimples *next;
     } NoSimples;
 
-    NoSimples *L1 = (NoSimples *)malloc(sizeof(NoSimples));
-    NoSimples *L2 = (NoSimples *)malloc(sizeof(NoSimples));
-    int i;      //variável extraída do for
+    NoSimples *L1 = malloc(sizeof(NoSimples));
+    NoSimples *L2 = malloc(sizeof(NoSimples));
 
     L1->value = 1;
     L2->value = 2;
@@ -147,12 +146,12 @@ void lista_5(){
     L2->next = L1;
 
     NoSimples *ptr = L1;
-    for(i = 0; i < 4; i++){
+    for(int i = 0; i < 4; i++){
         printf("Rodando em circulo: %d\n", ptr->value);
         ptr = ptr->next;
     }
-    free(L1);
-    free(L2);
+free(L1);
+free(L2);
 }
 
 
